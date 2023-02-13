@@ -1,0 +1,45 @@
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+intents:
+- greet
+- package_plan
+- website_info
+- bundle_pack
+- internet_pack
+- say_name
+entities:
+- weblink
+- name
+slots:
+  name:
+    type: text
+responses:
+  utter_ask_name:
+  - text: What's your name?
+  utter_packages:
+  - text: Which package would you prefer?
+    buttons:
+    - title: Bundle
+      payload: /bundle_pack
+    - title: Internet
+      payload: /internet_pack
+  utter_bundle_pack:
+  - text: 'Here is our bundle plan:'
+    image: https://i.pinimg.com/736x/06/44/f1/0644f1a8c91c822f34587eb10ef83d67.jpg
+  utter_internet_pack:
+  - text: 'Here is our internet plan:'
+    image: https://i.ytimg.com/vi/AtBKeJyiQUw/maxresdefault.jpg
+  utter_website_link:
+  - text: Here is our [website]({weblink})
+  utter_greet_with_name:
+  - text: Hi {name} how are you?
+actions:
+- utter_ask_name
+- utter_packages
+- utter_bundle_pack
+- utter_internet_pack
+- utter_website_link
+- action_website_info
+- utter_greet_with_name
+- action_show_name_greet
